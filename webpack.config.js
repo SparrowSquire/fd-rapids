@@ -9,6 +9,15 @@ const app = {
                 use: [
                     'babel-loader',
                 ],
+            },
+            {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'less-loader',
+                ],
             }
         ]
     },
@@ -18,11 +27,29 @@ const app = {
     output: {
         path: __dirname + '/public',
         publicPath: '/',
-        filename: 'rapids.js'
+        filename: 'bundle.js'
     },
     devServer: {
         contentBase: './public'
     },
 };
 
-module.exports = [app];
+const lib = {
+    entry: './src/rapids.js',
+    output: {
+        path: __dirname + '/public',
+        publicPath: '/',
+        filename: 'rapids.js'
+    },
+};
+
+const libIntl = {
+    entry: './src/rapids-intl.js',
+    output: {
+        path: __dirname + '/public',
+        publicPath: '/',
+        filename: 'rapids-intl.js'
+    },
+};
+
+module.exports = [app, lib, libIntl];
