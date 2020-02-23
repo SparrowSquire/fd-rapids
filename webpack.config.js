@@ -18,7 +18,7 @@ const app = {
     output: {
         path: __dirname + '/public',
         publicPath: '/',
-        filename: 'bundle.js'
+        filename: 'rapids.js'
     },
     devServer: {
         contentBase: './public'
